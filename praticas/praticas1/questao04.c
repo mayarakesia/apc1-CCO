@@ -10,8 +10,8 @@ int main(){
   const float PIS_PASEP = 0.0165f;
 
   float valor_icms = ICMS * preco_inicial;
-   float valor_cofins = COFINS * preco_inicial;
-   float valor_pis_pasep = PIS_PASEP * preco_inicial;
+  float valor_cofins = COFINS * preco_inicial;
+  float valor_pis_pasep = PIS_PASEP * preco_inicial;
   
   
   float preco_final = (1 + ICMS + COFINS + PIS_PASEP) * preco_inicial;
