@@ -1,10 +1,11 @@
-// Faça um programa em C que calcule a altura alcançada por um avião após ter percorrido uma certa distância (seno(ângulo) = altura/distância). Considere o ângulo de inclinação do avião menor ou igual a 45°.
+// Faça um programa em C que calcule a altura alcançada por um avião após ter
+// percorrido uma certa distância (seno(ângulo) = altura/distância). Considere o
+// ângulo de inclinação do avião menor ou igual a 45°.
 
-
-#include <stdio.h>
 #include <math.h>
+#include <stdio.h>
 
-int main(){
+int main() {
   float distancia, angulo, altura;
   double float PI = 3.14;
 
@@ -17,8 +18,5 @@ int main(){
   printf("O resultado e: ");
   scanf("%f", &PI, &);
 
-  
-
- 
   return 0;
 }
