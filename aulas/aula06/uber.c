@@ -6,8 +6,7 @@ int main(){
   printf("Entre com a avaliacao de 1 a 5: ");
   int deu_certo = scanf("%i", &avaliacao);
 
-
-  switch(avaliacao) {
+    switch(avaliacao) {
     case 1: printf("O motorista ganhou *\n"); break;
     case 2: printf("O motorista ganhou **\n"); break;
     case 3: printf("O motorista ganhou ***\n"); break;
