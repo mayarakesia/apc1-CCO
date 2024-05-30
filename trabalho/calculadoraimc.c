@@ -1,39 +1,55 @@
-
 #include <stdio.h>
-
-// dicionário, lista
+#include <stdlib.h>
 
 int main() {
-  char nome[50];
-  int opcao;
-  float peso, altura, imc;
+  int opcao = 0;
+  while (opcao != 3) {
+    int deu_certo = system("clear");
+    printf("CALCULADORA IMC\n");
+    printf("1 - Iniciar\n");
+    printf("2 - Ver Evolução\n");
+    printf("3 - Sair\n");
+    printf("Escolha uma opcao => ");
+    deu_certo = scanf("%i", &opcao);
+     while (getchar() != '\n');
+    if (!deu_certo) {
+      opcao = 0;
+    }
 
-  printf("Digite o seu primeiro nome: ");
-  scanf("%s", nome);
-
-  do {
-
-    printf("Seja bem-vindo(a), %s\n", nome);
-    printf("MENU PRINCIPAL\n");
-    printf("1 - Calcular IMC\n");
-    printf("2 - Sair\n");
-    printf("Escolha uma opção => ");
-    scanf("%i", &opcao);
+    switch (opcao) {
+    case 1: {
+      char nome[31];
+      deu_certo = system("clear");
+      printf("Qual o seu nome? ");
+      deu_certo = scanf("%[^\n]s", nome);
+      while (getchar() != '\n'); // limpar buffer do teclado
+      printf("Olá %s!\n", nome);
+      printf("pressione ENTER para continuar...");
+      getchar();
+      break;
+    }
+    case 2: {
+      deu_certo = system("clear");
+      printf("Ranking - top 5\n");
+       printf("1o lugar: Mayara - 1000pts\n");
+       printf("2o lugar: Maria - 800pts\n");
+       printf("3o lugar: Bia - 700pts\n");
+       printf("4o lugar: Pedro - 500pts\n");
+      printf("5o lugar: Joao - 200pts\n");
+      printf("pressione ENTER para voltar...");
+      getchar();
+      break;
+    }
+    case 3:
+      break;
+    case 4:
+      printf("Ate logo!\n");
+      break;
+    default:
+      printf("Opção inválida! Pressione enter para continuar...\n");
+      while (getchar() != '\n')
+        ; // limpar buffer no teclado
+    }
   }
-
-  switch (imc) {
-  case 1:
-    printf("Digite o seu peso: ");
-    scanf("%f", &peso);
-
-    printf();
-    break;
-
-  default:
-    printf("Avaliacao invalida. tente novamente.\n");
-  }
-  while (opcao != 2)
-    ;
-
   return 0;
 }
