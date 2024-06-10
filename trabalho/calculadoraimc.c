@@ -1,55 +1,90 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define ANSI_COLOR_GREEN "\033[0;32m"
+#define ANSI_COLOR_RESET "\033[0m"
+
+int deu_certo = 0;
 
 int main() {
-  int opcao = 0;
-  while (opcao != 3) {
-    int deu_certo = system("clear");
-    printf("CALCULADORA IMC\n");
-    printf("1 - Iniciar\n");
-    printf("2 - Ver Evolução\n");
-    printf("3 - Sair\n");
-    printf("Escolha uma opcao => ");
-    deu_certo = scanf("%i", &opcao);
-     while (getchar() != '\n');
-    if (!deu_certo) {
-      opcao = 0;
+  int opcao;
+  float peso, altura, imc;
+  char buffer[100];
+
+  do {
+    printf("\n" ANSI_COLOR_GREEN "MENU PRINCIPAL\n" ANSI_COLOR_RESET);
+    printf("1. Calcular IMC\n");
+    printf("2. Informacoes sobre IMC\n");
+    printf("3. Sair\n");
+    printf("Escolha uma opcao: ");
+
+    if (scanf("%d", &opcao) != 1) {
+      printf("Opcao invalida! Tente novamente.\n");
+      deu_certo = scanf("%s", buffer);
+      continue;
     }
 
     switch (opcao) {
-    case 1: {
-      char nome[31];
-      deu_certo = system("clear");
-      printf("Qual o seu nome? ");
-      deu_certo = scanf("%[^\n]s", nome);
-      while (getchar() != '\n'); // limpar buffer do teclado
-      printf("Olá %s!\n", nome);
-      printf("pressione ENTER para continuar...");
-      getchar();
+    case 1:
+      printf("\n------------------------------\n");
+      printf("\nCalculadora de IMC\n");
+      printf("Insira o peso (em kg): ");
+      if (scanf("%f", &peso) != 1) {
+        printf("Entrada invalida! Por favor, insira um numero.\n");
+        deu_certo = scanf("%s", buffer);
+        continue;
+      }
+      printf("Insira a altura (em metros): ");
+      if (scanf("%f", &altura) != 1) {
+        printf("Entrada invalida! Por favor, insira um numero.\n");
+        deu_certo = scanf("%s", buffer);
+        continue;
+      }
+
+      imc = peso / (altura * altura);
+
+      printf("Seu IMC e: %.2f\n", imc);
+
+      if (imc < 18.5) {
+        printf("Abaixo do peso\n");
+        printf("\n------------------------------\n");
+      } else if (imc < 25) {
+        printf("Peso ideal\n");
+        printf("\n------------------------------\n");
+      } else if (imc < 30) {
+        printf("Sobrepeso\n");
+        printf("\n------------------------------\n");
+      } else if (imc < 35) {
+        printf("Obesidade I\n");
+        printf("\n------------------------------\n");
+      } else if (imc < 40) {
+        printf("Obesidade II (SEVERA)\n");
+        printf("\n------------------------------\n");
+      } else {
+        printf("Obesidade III (MÓRBIDA)\n");
+        printf("\n------------------------------\n");
+      }
       break;
-    }
-    case 2: {
-      deu_certo = system("clear");
-      printf("Ranking - top 5\n");
-       printf("1o lugar: Mayara - 1000pts\n");
-       printf("2o lugar: Maria - 800pts\n");
-       printf("3o lugar: Bia - 700pts\n");
-       printf("4o lugar: Pedro - 500pts\n");
-      printf("5o lugar: Joao - 200pts\n");
-      printf("pressione ENTER para voltar...");
-      getchar();
+
+    case 2:
+      printf("\n------------------------------\n");
+      printf("\nRESULTADO:\n");
+      printf("IMC < 18.5: Abaixo do peso\n");
+      printf("18.5 <= IMC < 25: Peso normal\n");
+      printf("25 <= IMC < 30: Sobrepeso\n");
+      printf("30 <= IMC < 35: Obesidade I\n");
+      printf("35 <= IMC < 40: Obesidade II (SEVERA)\n");
+      printf("IMC < 40: Obesidade III (MÓRBIDA)\n");
+      printf("\n------------------------------\n");
       break;
-    }
+
     case 3:
+      printf("\nSaindo do programa. Ate a proxima!\n");
       break;
-    case 4:
-      printf("Ate logo!\n");
-      break;
+
     default:
-      printf("Opção inválida! Pressione enter para continuar...\n");
-      while (getchar() != '\n')
-        ; // limpar buffer no teclado
+      printf("\nInvalido! Tente novamente.\n");
     }
-  }
+  } while (opcao != 3);
+
   return 0;
 }
